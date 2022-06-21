@@ -44,7 +44,6 @@ module.exports.Controller = class Controller {
    console.log(req.params)
    const { id } = req.params
    const data = await this.dao.get(id)
-   console.log(data)
    res.status(200).json(data)
   }
 }
