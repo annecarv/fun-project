@@ -16,7 +16,7 @@ button {
     cursor: pointer;
     border-radius: 5px;
     width: 100%;
-    height:40px;
+    height: 40px;
     font-weight: bold;
     text-decoration: none;
     font-size: 14px;
@@ -25,15 +25,27 @@ button {
     border: none;
 }
 
+/* Refatorar o elemento button em SASS*/
+button:active, button:hover {
+    /*-webkit-transition: background-color 0s ease-in-out,color 0s ease-in-out,border 0s ease-in-out;
+    transition: background-color 0s ease-in-out,color 0s ease-in-out,border 0s ease-in-out;
+    -webkit-text-decoration: none;*/
+    color: #FFFFFF;
+    background-color: #B37F00;
+    border: 2px solid #B37F00;
+    text-decoration: none;
+}
+
 .c-cadastro-title {
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
     color: #000000;
     border-radius: 2px;
-    padding: 10px;
+    padding: 2px;
+    margin: 22px;
     text-align: center;
-
+    border-bottom: 1px solid rgb(132, 131, 131);
 }
 
 .c-cadastro-input-group {
@@ -48,7 +60,7 @@ button {
     padding: 20px;
     margin-top: 12%;
     margin-left: 34%;
-    text-align:justify;
+    text-align: justify;
     border-radius: 10px;
 }
 
@@ -65,6 +77,35 @@ button {
 
 }
 
+/* Refatorar o elemento copyright em SASS*/
 .c-copyright {
+    font-family: system-ui;
     font-size: 18px;
+    line-height: 21px;
+    text-align: right;
+    text-decoration: none;
+}
+
+a.c-copyright:hover {
+    color: rgb(255, 182, 18);
+}
+
+/* link que ainda não foi visitado */
+a.c-copyright:link {
+    color: #ffffff;
+}
+
+/* link que foi visitado */
+a.c-copyright:visited {
+    color: #ffffff;
+}
+
+/* mouse over */
+a.c-copyright:hover {
+    color: #000000;
+}
+
+/* link selecionado */
+a.c-copyright:active {
+    color: #ffffff;
 }
