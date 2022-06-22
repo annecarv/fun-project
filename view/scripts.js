@@ -26,10 +26,12 @@ async function CreateUser(dados) {
     redirect: "follow",
   };
 
-  return fetch("http://localhost:3000/user", requestOptions)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log("error", error));
+   const request = await fetch("http://localhost:3000/user", requestOptions)
+    return request
+    
+    //.then((response) => response.json())
+    //.then((result) => result)
+    //.catch((error) => error)
 }
 
 function SubmeterDados(event) {
@@ -50,16 +52,18 @@ function SubmeterDados(event) {
     telefone:Number(document.forms['form-users']['tel'].value)
   }
 
-  CreateUser(dados).then(res => {
+  CreateUser(dados).then(async res => {
+    if (res.status !== 201 ) {
+      const resultado = await res.json()
+      console.log(resultado)
+      return
+    }
     console.log('Sucesso')
-    
+    console.log(res)
+    document.location.reload(true)
   }).catch ( error => {
     console.error(error);
   })
-
-  
-  console.log(dados)
-  console.log('Olá, estou funcionando!')
 }
 
 document.addEventListener('DOMContentLoaded', function eventos () {
