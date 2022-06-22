@@ -11,58 +11,61 @@
 
 <body>
 
-    <h2 class="c-cadastro-title"> Insira seus dados </h2>
     <form name="form-users">
         <div class="c-cadastro-input-group">
-        <div class="c-cadastro-input-firstname">
-            <label for="firstname">Primeiro Nome</label>
-            <input id="firstname" type="text" name="firstname" placeholder="Digite seu primeiro nome" required>
+            <h2 class="c-cadastro-title"> Cadastrar Usuário </h2>
+            <div class="c-cadastro-input-firstname">
+                <label for="firstname">Primeiro Nome:</label>
+                <input id="firstname" type="text" name="firstname" placeholder="Digite seu primeiro nome" required>
+            </div>
+            <div class="c-cadastro-input-lastname">
+                <label for="lastname">Sobrenome:</label>
+                <input id="lastname" type="text" name="lastname" placeholder="Digite seu sobrenome" required>
+            </div>
+            <div class="c-cadastro-input-email">
+                <label for="email">Email:</label>
+                <input id="email" type="email" name="email" placeholder="Digite seu email" required>
+            </div>
+            <div class="c-cadastro-input-cep">
+                <label for="number">CEP:</label>
+                <input id="cep" type="number" name="cep" placeholder="CEP" required>
+            </div>
+            <div class="c-cadastro-input-address">
+                <label for="address">Endereço:</label>
+                <input id="address" type="text" name="address" placeholder="Digite seu endereço" required>
+            </div>
+            <div class="c-cadastro-input-number">
+                <label for="number">Número:</label>
+                <input id="number" type="number" name="number" placeholder="Número" required>
+            </div>
+            <div class="c-cadastro-input-uf">
+                <label for="address">Digite sua UF:</label>
+                <input id="uf" type="text" name="uf" placeholder="Digite sua UF" required>
+            </div>
+            <div class="c-cadastro-input-city">
+                <label for="address">Cidade:</label>
+                <input id="city" type="text" name="city" placeholder="Digite sua Cidade" required>
+            </div>
+            <div class="c-cadastro-input-cpf">
+                <label for="cpf">CPF:</label>
+                <input id="cpf" type="number" name="cpf" placeholder="CPF" required>
+            </div>
+            <div class="c-cadastro-input-age">
+                <label for="number">Idade:</label>
+                <input id="age" type="number" name="age" placeholder="Digite sua idade" required>
+            </div>
+            <div class="c-cadastro-input-tel">
+                <label for="number">Telefone:</label>
+                <input id="tel" type="tel" name="tel" placeholder="(xx) xxxx-xxxx" required>
+            </div>
+            <div class="c-cadastro-input-cadastrar" id="btn">
+                <button>Cadastrar</button>
+            </div>
         </div>
-        <div class="c-cadastro-input-lastname">
-            <label for="lastname">Sobrenome</label>
-            <input id="lastname" type="text" name="lastname" placeholder="Digite seu sobrenome" required>
-        </div>
-        <div class="c-cadastro-input-email">
-            <label for="email">Email</label>
-            <input id="email" type="email" name="email" placeholder="Digite seu email" required>
-        </div>
-        <div class="c-cadastro-input-cep">
-            <label for="number">CEP</label>
-            <input id="cep" type="number" name="cep" placeholder="CEP" required>
-        </div>
-        <div class="c-cadastro-input-address">
-            <label for="address">Endereço</label>
-            <input id="address" type="text" name="address" placeholder="Digite seu endereço" required>
-        </div>
-        <div class="c-cadastro-input-number">
-            <label for="number">Número</label>
-            <input id="number" type="number" name="number" placeholder="Número" required>
-        </div>
-        <div class="c-cadastro-input-uf">
-            <label for="address">Digite sua UF</label>
-            <input id="uf" type="text" name="uf" placeholder="Digite sua UF" required>
-        </div>
-        <div class="c-cadastro-input-city">
-            <label for="address">Cidade</label>
-            <input id="city" type="text" name="city" placeholder="Digite sua Cidade" required>
-        </div>
-        <div class="c-cadastro-input-cpf">
-            <label for="cpf">CPF</label>
-            <input id="cpf" type="number" name="cpf" placeholder="CPF" required>
-        </div>
-        <div class="c-cadastro-input-age">
-            <label for="number">Idade</label>
-            <input id="age" type="number" name="age" placeholder="Digite sua idade" required>
-        </div>
-        <div class="c-cadastro-input-tel">
-            <label for="number">Telefone</label>
-            <input id="tel" type="tel" name="tel" placeholder="(xx) xxxx-xxxx" required>
-        </div>
-        <div class="c-cadastro-input-cadastrar" id="btn">
-            <button>Cadastrar</button>
-        </div>
-    </div>
     </form>
+    <footer class="c-footer">
+       <p><a class="c-copyright" href="https://www.linkedin.com/in/annecarv/"> © Anne Carvalho. Todos os direitos reservados.</a></p> 
+    </footer>
     <script src="scripts.js"></script>
 </body>
 

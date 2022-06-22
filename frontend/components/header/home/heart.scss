@@ -1,0 +1,40 @@
+@import './_variable.scss';
+
+$component: 'c-home';
+.#{$component} {
+  height: 32px;
+  width: 32px;
+
+  &::before {
+    content:'';
+    color: transparent;
+    background-color: #c0c0c0;
+    border-radius: 50%;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #c0c0c0;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    box-sizing: border-box;
+  }
+
+  &__icon {
+    fill: #fff;
+    stroke: #222222;
+    stroke-width: 2;
+  }
+}
+
+/** objeto reutilizavel
+ **/
+.o-button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+
