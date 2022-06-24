@@ -52,7 +52,7 @@
             </div>
             <div class="c-cadastro-input-age">
                 <label for="number">Idade:</label>
-                <input id="age" type="number" name="age" placeholder="Digite a cidade" required>
+                <input id="age" type="number" name="age" placeholder="Digite a idade" required>
             </div>
             <div class="c-cadastro-input-tel">
                 <label for="number">Telefone:</label>
@@ -75,6 +75,11 @@
         }
     </style>
     <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function eventos() {
+            const buttonSubmit = document.getElementsByClassName('c-cadastro-input-cadastrar')[0]
+            buttonSubmit.addEventListener('click', SubmeterDados)
+        })</script>
 </body>
 
 </html>

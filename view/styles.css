@@ -26,7 +26,8 @@ button {
 }
 
 /* Refatorar o elemento button em SASS*/
-button:active, button:hover {
+button:active,
+button:hover {
     /*-webkit-transition: background-color 0s ease-in-out,color 0s ease-in-out,border 0s ease-in-out;
     transition: background-color 0s ease-in-out,color 0s ease-in-out,border 0s ease-in-out;
     -webkit-text-decoration: none;*/
@@ -66,7 +67,7 @@ button:active, button:hover {
 
 .c-footer {
     display: flex;
-    background: #FF7A29;
+    background: #F0E68C	;
     width: 100%;
     height: 20%;
     position: absolute;
@@ -108,4 +109,30 @@ a.c-copyright:hover {
 /* link selecionado */
 a.c-copyright:active {
     color: #ffffff;
+}
+
+.c-card {
+    margin: 20%;
+    padding: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #B37F00;
+    font-family: 'Barlow', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nunito', sans-serif;
+}
+
+.c-card-user {
+    background-color: rgb(126, 90, 161);
+}
+
+.c-card-user-icon {
+    background-color: rgb(141, 182, 141);
+}
+
+.c-card-li {
+    background-color: aqua;
+    list-style-type: none;
 }
