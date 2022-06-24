@@ -31,10 +31,17 @@ function createCard(user) {
       listUl.appendChild(listLi)
   })
 
-  const btn = document.createElement('button')
-  document.createTextNode('Editar')
-  btn.setAttribute('class', 'c-cadastro-editar c-cadastro-button__margin')
-  div.appendChild(btn)
+  const btnEditar = document.createElement('button')
+  btnEditar.setAttribute('class', 'c-cadastro-edit c-cadastro-button-edit__position')
+  div.appendChild(btnEditar)
+  const txtEdit = document. createTextNode('Editar')
+  btnEditar.appendChild(txtEdit)
+
+  const btnDelete = document.createElement('button')
+  btnDelete.setAttribute('class', 'c-cadastro-delete c-cadastro-button-delete__position')
+  div.appendChild(btnDelete)
+  const txtDelete = document.createTextNode('Deletar')
+  btnDelete.appendChild(txtDelete)
 
   const cardTitleDescription = document.createElement('p')
   cardTitleDescription.innerHTML = user.nome

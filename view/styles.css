@@ -11,7 +11,7 @@ body {
     background-color: #f0ede7;
 }
 
-button, .c-cadastro-editar {
+button, .c-cadastro-edit, .c-cadastro-delete {
     /*apenas estilizações padrões*/
     cursor: pointer;
     border-radius: 5px;
@@ -25,9 +25,14 @@ button, .c-cadastro-editar {
     border: none;
 }
 
-.c-cadastro-button__margin {
-    width: 18%;
-    justify-content: center;
+.c-cadastro-button-edit__position, .c-cadastro-button-delete__position {
+    width: 20%;
+    margin: 8px;
+    padding: 8px;
+    display:inline-flex;
+    justify-content: space-between;
+    justify-items: center;
+    
 }
 
 /* Refatorar o elemento button em SASS*/
