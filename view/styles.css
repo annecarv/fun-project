@@ -11,7 +11,7 @@ body {
     background-color: #f0ede7;
 }
 
-button {
+button, .c-cadastro-editar {
     /*apenas estilizações padrões*/
     cursor: pointer;
     border-radius: 5px;
@@ -23,6 +23,11 @@ button {
     text-transform: uppercase;
     background-color: #EEB853;
     border: none;
+}
+
+.c-cadastro-button__margin {
+    width: 18%;
+    justify-content: center;
 }
 
 /* Refatorar o elemento button em SASS*/
@@ -67,7 +72,7 @@ button:hover {
 
 .c-footer {
     display: flex;
-    background: #F0E68C	;
+    background: #fcaf14;
     width: 100%;
     height: 20%;
     position: absolute;
@@ -112,13 +117,13 @@ a.c-copyright:active {
 }
 
 .c-card {
-    margin: 20%;
-    padding: 50px;
+    margin: 25%;
+    padding: 12px;
     border-radius: 10px;
     font-size: 18px;
     line-height: 20px;
     text-align: center;
-    background-color: #B37F00;
+    background-color: #d9cfb5;
     font-family: 'Barlow', sans-serif;
     font-family: 'Montserrat', sans-serif;
     font-family: 'Nunito', sans-serif;
@@ -130,9 +135,16 @@ a.c-copyright:active {
 
 .c-card-user-icon {
     background-color: rgb(141, 182, 141);
+    border-radius: 8px;
+    margin: 8px;
 }
 
 .c-card-li {
     background-color: aqua;
+    width: 70%;
+    margin: 16px;
+    padding: 8px;
+    display: flex;
+    justify-content:flex-end;
     list-style-type: none;
 }

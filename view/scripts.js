@@ -1,7 +1,6 @@
 function createCard(user) {
   const div = document.createElement('div')
   div.setAttribute('class', 'c-card')
-  
 
   const divCard = document.createElement('div')
   div.appendChild(divCard)
@@ -32,6 +31,11 @@ function createCard(user) {
       listUl.appendChild(listLi)
   })
 
+  const btn = document.createElement('button')
+  document.createTextNode('Editar')
+  btn.setAttribute('class', 'c-cadastro-editar c-cadastro-button__margin')
+  div.appendChild(btn)
+
   const cardTitleDescription = document.createElement('p')
   cardTitleDescription.innerHTML = user.nome
 
@@ -43,7 +47,16 @@ function createCard(user) {
   const handler = document.getElementById('teste')
   handler.appendChild(div)
 
+
 }
+
+/*function editUser(){
+  const btn = document.createElement('button')
+  btn.createTextNode('Editar')
+  btn.onclick.console.log('Botão editar')
+  document.body.appendChild(btn)
+  btn.setAttribute('class', 'c-cadastro-editar')
+}*/
 
 async function listUsers() {
   var requestOptions = {
