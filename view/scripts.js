@@ -32,17 +32,15 @@ function createCard(user) {
   })
 
   const btnEdit = document.createElement('button')
-  btnEdit.setAttribute('class', 'c-cadastro-edit c-cadastro-button-edit__position')
+  btnEdit.setAttribute('class', 'c-cadastro-edit c-cadastro-edit-txt c-cadastro-button-edit__position')
   div.appendChild(btnEdit)
   const txtEdit = document.createTextNode('Editar')
- // txtEdit.setAttribute('class', 'c-cadastro-edit-text')
   btnEdit.appendChild(txtEdit)
 
   const btnDelete = document.createElement('button')
-  btnDelete.setAttribute('class', 'c-cadastro-delete c-cadastro-button-delete__position')
+  btnDelete.setAttribute('class', 'c-cadastro-delete c-cadastro-delete-txt c-cadastro-button-delete__position')
   div.appendChild(btnDelete)
   const txtDelete = document.createTextNode('Deletar')
- // txtDelete.setAttribute('class', 'c-cadastro-delete-text')
   btnDelete.appendChild(txtDelete)
 
   const cardTitleDescription = document.createElement('p')
@@ -56,16 +54,7 @@ function createCard(user) {
   const handler = document.getElementById('teste')
   handler.appendChild(div)
 
-
 }
-
-/*function editUser(){
-  const btn = document.createElement('button')
-  btn.createTextNode('Editar')
-  btn.onclick.console.log('Botão editar')
-  document.body.appendChild(btn)
-  btn.setAttribute('class', 'c-cadastro-editar')
-}*/
 
 async function listUsers() {
   var requestOptions = {
@@ -139,5 +128,20 @@ function SubmeterDados(event) {
     });
 }
 
+async function EditUser(dados) {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
 
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: JSON.stringify(dados),
+    redirect: "follow",
+  };
 
+  const request = await fetch("http://localhost:3000/user", requestOptions);
+  return request;
+}
+
+function DeleteUser( ) {
+}

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <section class="c-card" id="teste">Teste HTML</section>
+    <section class="c-card" id="teste"></section>
     <footer class="c-footer">
         <p><a class="c-copyright" target="_blank" href="https://www.linkedin.com/in/annecarv/"> ©Anne Carvalho.
                 Todos os direitos reservados.</a></p>
@@ -18,6 +18,12 @@
     <script src="component-card.js"></script>
     <script src="scripts.js"></script>
     <script>createList();</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function DeleteUser() {
+            const alertDelete = document.getElementsByClassName('c-cadastro-delete')
+            btnDelete.addEventListener('click', alert('Cuidado, ação irreversível'))
+        })</script>
+    </script>
 </body>
 
 </html>
