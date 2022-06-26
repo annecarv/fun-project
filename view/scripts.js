@@ -31,16 +31,18 @@ function createCard(user) {
       listUl.appendChild(listLi)
   })
 
-  const btnEditar = document.createElement('button')
-  btnEditar.setAttribute('class', 'c-cadastro-edit c-cadastro-button-edit__position')
-  div.appendChild(btnEditar)
-  const txtEdit = document. createTextNode('Editar')
-  btnEditar.appendChild(txtEdit)
+  const btnEdit = document.createElement('button')
+  btnEdit.setAttribute('class', 'c-cadastro-edit c-cadastro-button-edit__position')
+  div.appendChild(btnEdit)
+  const txtEdit = document.createTextNode('Editar')
+ // txtEdit.setAttribute('class', 'c-cadastro-edit-text')
+  btnEdit.appendChild(txtEdit)
 
   const btnDelete = document.createElement('button')
   btnDelete.setAttribute('class', 'c-cadastro-delete c-cadastro-button-delete__position')
   div.appendChild(btnDelete)
   const txtDelete = document.createTextNode('Deletar')
+ // txtDelete.setAttribute('class', 'c-cadastro-delete-text')
   btnDelete.appendChild(txtDelete)
 
   const cardTitleDescription = document.createElement('p')
@@ -136,3 +138,6 @@ function SubmeterDados(event) {
       console.error(error);
     });
 }
+
+
+

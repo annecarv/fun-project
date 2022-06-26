@@ -32,7 +32,10 @@ button, .c-cadastro-edit, .c-cadastro-delete {
     display:inline-flex;
     justify-content: space-between;
     justify-items: center;
-    
+}
+
+.c-cadastro-edit-text, .c-cadastro-delete-text {
+    justify-items: center;
 }
 
 /* Refatorar o elemento button em SASS*/
