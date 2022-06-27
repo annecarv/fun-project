@@ -12,25 +12,26 @@ body {
     background-color: #f0ede7;
 }
 
-/*.c-cadastro-input-group {
+.c-cadastro-input-group {
     /*display: flex;
     flex-wrap: wrap;
-    justify-content:flex-start;
+    justify-content:flex-start;*/
+    display: grid;
     justify-self: center;
-    background-color: #b32121;
-    width: 40%;
-    height: 80%x;
+    background-color: #ffffff;
+    width: 500px;
+    height: 600px;
     padding: 20px;
     margin-top: 12%;
     margin-left: 34%;
     text-align: justify;
     border-radius: 10px;
-} */
+}
 
 .c-card {
     display: flex;
     flex-wrap: wrap;
-    margin: 16%;
+    margin: 20%;
     padding: 20px;
     width: 60%;
     border-radius: 10px;

@@ -36,9 +36,11 @@ function createCard(user) {
   div.appendChild(btnEdit)
   const txtEdit = document.createTextNode('Editar')
   btnEdit.appendChild(txtEdit)
+  btnEdit.addEventListener('click', function () {document.location.href=`http://127.0.0.1:5500/view/index.html?id=${user._id}`})
 
   const btnDelete = document.createElement('button')
   btnDelete.setAttribute('class', 'c-cadastro-delete c-cadastro-delete-txt c-cadastro-button-delete__position')
+  btnDelete.addEventListener('click', () => { DeleteUser(user); alert('Cuidado, ação irreversível'); document.location.reload()})
   div.appendChild(btnDelete)
   const txtDelete = document.createTextNode('Deletar')
   btnDelete.appendChild(txtDelete)
@@ -128,20 +130,13 @@ function SubmeterDados(event) {
     });
 }
 
-async function EditUser(dados) {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+async function DeleteUser(user) {
 
   var requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: JSON.stringify(dados),
-    redirect: "follow",
+    method: "DELETE",
+    redirect: "follow"
   };
 
-  const request = await fetch("http://localhost:3000/user", requestOptions);
+  const request = await fetch(`http://localhost:3000/user/${user._id}`, requestOptions);
   return request;
-}
-
-function DeleteUser( ) {
 }
