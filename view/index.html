@@ -76,7 +76,23 @@
     </style>
     <script src="scripts.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function eventos() {
+        document.addEventListener('DOMContentLoaded', async function eventos() {
+            const params = new URLSearchParams(window.location.search)
+            let userId = null
+                if(params.has('id')) {
+                    user.id = params.get('id')
+                }
+            const user = await getUser(userId).then(async function(result){
+                if(result.status !== 200) {
+                    console.log(await result.text())
+                    return
+                }
+                    const resUser = await result.json()
+                    return resUser
+                })
+                .catch(function(error){
+                    console.log(error)
+                })
             const buttonSubmit = document.getElementsByClassName('c-cadastro-input-cadastrar')[0]
             buttonSubmit.addEventListener('click', SubmeterDados)
         })</script>

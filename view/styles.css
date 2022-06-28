@@ -44,6 +44,10 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
+.c-card-title {
+    background-color: #f21f1f;
+}
+
 .c-card-user {
     background-color: rgb(126, 90, 161);
 }
@@ -64,7 +68,7 @@ body {
     list-style-type: none;
 }
 
-button, .c-cadastro-edit, .c-cadastro-delete {
+button, .c-cadastro-edit, .c-cadastro-delete, .c-cadastro-read {
     /*apenas estilizações padrões*/
     padding: 15px;
     text-align: center;
@@ -74,7 +78,7 @@ button, .c-cadastro-edit, .c-cadastro-delete {
     height: 40px;
     text-decoration: none;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: uppercase;
     background-color: #EEB853;
     border: none;
@@ -93,7 +97,7 @@ button, .c-cadastro-edit, .c-cadastro-delete {
     text-decoration: none;
 }
 
-.c-cadastro-button-edit__position, .c-cadastro-button-delete__position {
+.c-cadastro-button-edit__position, .c-cadastro-button-delete__position, .c-cadastro-button-read__position {
     width: 20%;
     margin: 8px;
     padding: 8px;
@@ -111,7 +115,7 @@ button:hover {
     text-decoration: none;
 }
 
-.c-cadastro-title {
+.c-cadastro-title, .c-card-user-title {
     font-style: normal;
     font-weight: normal;
     font-size: 24px;

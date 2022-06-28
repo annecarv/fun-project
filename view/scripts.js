@@ -1,4 +1,5 @@
 function createCard(user) {
+
   const div = document.createElement('div')
   div.setAttribute('class', 'c-card')
 
@@ -31,6 +32,13 @@ function createCard(user) {
       listUl.appendChild(listLi)
   })
 
+  const btnReadUser = document.createElement('button')
+  btnReadUser.setAttribute('class', 'c-cadastro-read c-cadastro-read-txt c-cadastro-button-read__position')
+  btnReadUser.addEventListener('click', function () {document.location.href=`http://127.0.0.1:5500/view/index.html?id=${user._id}`})
+  div.appendChild(btnReadUser)
+  const txtReadUser = document.createTextNode('Visualizar')
+  btnReadUser.appendChild(txtReadUser)
+
   const btnEdit = document.createElement('button')
   btnEdit.setAttribute('class', 'c-cadastro-edit c-cadastro-edit-txt c-cadastro-button-edit__position')
   div.appendChild(btnEdit)
@@ -53,7 +61,7 @@ function createCard(user) {
   divCard.appendChild(cardTitleDescription)
   divCard.appendChild(cardDescription)
 
-  const handler = document.getElementById('teste')
+  const handler = document.getElementById('c-card-section')
   handler.appendChild(div)
 
 }
@@ -76,6 +84,13 @@ async function listUsers() {
 }
 
 async function createList() {
+
+  const handler = document.getElementById('c-card-section')
+
+  const title = document.createElement('h1')
+  title.appendChild(document.createTextNode('Usuários Cadastrados'))
+  handler.appendChild(title)
+
   const users = await listUsers();
   for (const user of users) {
     createCard(user)
@@ -128,6 +143,34 @@ function SubmeterDados(event) {
     .catch((error) => {
       console.error(error);
     });
+}
+
+async function getUser(id){
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
+
+  const getUsersReturn = await fetch(`http://localhost:3000/user/${id}`, requestOptions)
+  return getUsersReturn
+}
+
+
+function carregarDados (user) {
+
+  document.forms["form-users"]["firstname"].value
+
+   /* document.forms["form-users"]["firstname"].value
+    document.forms["form-users"]["lastname"].value
+    document.forms["form-users"]["email"].value
+    document.forms["form-users"]["cpf"].value
+    document.forms["form-users"]["cep"].value
+    document.forms["form-users"]["address"].value
+    document.forms["form-users"]["number"].value
+    document.forms["form-users"]["city"].value
+    document.forms["form-users"]["uf"].value
+    document.forms["form-users"]["age"].value
+    document.forms["form-users"]["tel"].value*/
 }
 
 async function DeleteUser(user) {
