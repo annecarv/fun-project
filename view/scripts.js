@@ -23,7 +23,7 @@ function createCard(user) {
   const listUl = document.createElement('ul')
   infoUser.appendChild(listUl)
 
-  const attributes = ['cidade', 'idade']
+  const attributes = ['nome', 'sobrenome', ]
   attributes.forEach(item=>{
       const listLi = document.createElement('li')
       listLi.setAttribute('class', 'c-card-li')
@@ -54,7 +54,7 @@ function createCard(user) {
   btnDelete.appendChild(txtDelete)
 
   const cardTitleDescription = document.createElement('p')
-  cardTitleDescription.innerHTML = user.nome
+  cardTitleDescription.innerHTML = user.cidade
 
   const cardDescription = document.createElement('p')
 
@@ -67,7 +67,31 @@ function createCard(user) {
 }
 
 function createCardUser(user) {
-  const attributes = ['cidade', 'idade']
+
+  const div = document.createElement('div')
+  div.setAttribute('class', 'c-card')
+
+  const divCard = document.createElement('div')
+  div.appendChild(divCard)
+  div.setAttribute('class', 'c-card-user')
+
+  const divIcone = document.createElement('div')
+  divCard.appendChild(divIcone)
+  div.setAttribute('class', 'c-card-user-icon')
+
+  const divLine = document.createElement('div')
+  divIcone.appendChild(divLine)
+
+  const elementImg = document.createElement('img')
+  divIcone.appendChild(elementImg)
+
+  const infoUser = document.createElement('div')
+  divCard.appendChild(infoUser)
+
+  const listUl = document.createElement('ul')
+  infoUser.appendChild(listUl)
+
+  const attributes = ['nome', 'sobrenome', 'email', 'cpf', 'endereco', 'numero', 'cep', 'cidade', 'uf', 'idade', 'telefone']
   attributes.forEach(item=>{
       const listLi = document.createElement('li')
       listLi.setAttribute('class', 'c-card-li')
@@ -78,9 +102,9 @@ function createCardUser(user) {
 
   const btnReadUser = document.createElement('button')
   btnReadUser.setAttribute('class', 'c-cadastro-read c-cadastro-read-txt c-cadastro-button-read__position')
-  btnReadUser.addEventListener('click', function () {document.location.href=`http://127.0.0.1:5500/view/userCard.html?id=${user._id}`})
+  btnReadUser.addEventListener('click', function () {document.location.href=`http://127.0.0.1:5500/view/users.html`})
   div.appendChild(btnReadUser)
-  const txtReadUser = document.createTextNode('Visualizar')
+  const txtReadUser = document.createTextNode('Voltar')
   btnReadUser.appendChild(txtReadUser)
 
   const btnEdit = document.createElement('button')
@@ -96,6 +120,10 @@ function createCardUser(user) {
   div.appendChild(btnDelete)
   const txtDelete = document.createTextNode('Deletar')
   btnDelete.appendChild(txtDelete)
+
+  const handler = document.getElementById('c-card-section')
+  handler.appendChild(div)
+
 
 }
 

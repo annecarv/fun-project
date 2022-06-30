@@ -33,8 +33,7 @@
                         return
                     }
                     const resUser = await result.json()
-                    console.log(resUser)
-                    createCard(resUser)
+                    createCardUser(resUser)
                 })
                     .catch(function (error) {
                         console.log(error)
