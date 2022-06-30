@@ -29,8 +29,7 @@ body {
 }
 
 .c-card {
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-block;
     margin: 20%;
     padding: 20px;
     width: 60%;
@@ -42,6 +41,7 @@ body {
     font-family: 'Barlow', sans-serif;
     font-family: 'Montserrat', sans-serif;
     font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
 }
 
 .c-card-title {
@@ -53,11 +53,13 @@ body {
 }
 
 .c-card-user-icon {
+    display: inline-block;
     align-items: center;
     width: 500px;
     background-color: rgb(141, 182, 141);
     border-radius: 8px;
     margin: 8px;
+    box-sizing: border-box;
 }
 
 .c-card-li {
@@ -66,6 +68,7 @@ body {
     margin: 16px;
     padding: 8px;
     list-style-type: none;
+    box-sizing: border-box;
 }
 
 button, .c-cadastro-edit, .c-cadastro-delete, .c-cadastro-read {
@@ -82,6 +85,7 @@ button, .c-cadastro-edit, .c-cadastro-delete, .c-cadastro-read {
     text-transform: uppercase;
     background-color: #EEB853;
     border: none;
+    box-sizing: border-box;
 }
 
 /*Ajeitar margens e posicionamentos, não está funcionando, overflow tb nao*/
@@ -127,6 +131,9 @@ button:hover {
     border-bottom: 1px solid rgb(132, 131, 131);
 }
 
+.c-card-user-title {
+    
+}
 .c-footer {
     display: flex;
     background: #fcaf14;

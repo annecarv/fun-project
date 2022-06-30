@@ -34,7 +34,7 @@ function createCard(user) {
 
   const btnReadUser = document.createElement('button')
   btnReadUser.setAttribute('class', 'c-cadastro-read c-cadastro-read-txt c-cadastro-button-read__position')
-  btnReadUser.addEventListener('click', function () {document.location.href=`http://127.0.0.1:5500/view/index.html?id=${user._id}`})
+  btnReadUser.addEventListener('click', function () {document.location.href=`http://127.0.0.1:5500/view/userCard.html?id=${user._id}`})
   div.appendChild(btnReadUser)
   const txtReadUser = document.createTextNode('Visualizar')
   btnReadUser.appendChild(txtReadUser)
@@ -66,6 +66,39 @@ function createCard(user) {
 
 }
 
+function createCardUser(user) {
+  const attributes = ['cidade', 'idade']
+  attributes.forEach(item=>{
+      const listLi = document.createElement('li')
+      listLi.setAttribute('class', 'c-card-li')
+      const attr = document.createTextNode(user[item])
+      listLi.appendChild(attr)
+      listUl.appendChild(listLi)
+  })
+
+  const btnReadUser = document.createElement('button')
+  btnReadUser.setAttribute('class', 'c-cadastro-read c-cadastro-read-txt c-cadastro-button-read__position')
+  btnReadUser.addEventListener('click', function () {document.location.href=`http://127.0.0.1:5500/view/userCard.html?id=${user._id}`})
+  div.appendChild(btnReadUser)
+  const txtReadUser = document.createTextNode('Visualizar')
+  btnReadUser.appendChild(txtReadUser)
+
+  const btnEdit = document.createElement('button')
+  btnEdit.setAttribute('class', 'c-cadastro-edit c-cadastro-edit-txt c-cadastro-button-edit__position')
+  div.appendChild(btnEdit)
+  const txtEdit = document.createTextNode('Editar')
+  btnEdit.appendChild(txtEdit)
+  btnEdit.addEventListener('click', function () {document.location.href=`http://127.0.0.1:5500/view/index.html?id=${user._id}`})
+
+  const btnDelete = document.createElement('button')
+  btnDelete.setAttribute('class', 'c-cadastro-delete c-cadastro-delete-txt c-cadastro-button-delete__position')
+  btnDelete.addEventListener('click', () => { DeleteUser(user); alert('Cuidado, ação irreversível'); document.location.reload()})
+  div.appendChild(btnDelete)
+  const txtDelete = document.createTextNode('Deletar')
+  btnDelete.appendChild(txtDelete)
+
+}
+
 async function listUsers() {
   var requestOptions = {
     method: "GET",
@@ -87,9 +120,11 @@ async function createList() {
 
   const handler = document.getElementById('c-card-section')
 
-  const title = document.createElement('h1')
+  const title = document.createElement('h3')
   title.appendChild(document.createTextNode('Usuários Cadastrados'))
+  title.setAttribute('class', 'c-card-user-title')
   handler.appendChild(title)
+  handler.appendChild
 
   const users = await listUsers();
   for (const user of users) {
@@ -112,9 +147,32 @@ async function CreateUser(dados) {
   return request;
 }
 
-function SubmeterDados(event) {
+async function updateUser(user, id) {
+
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+
+var requestOptions = {
+  method: 'PUT',
+  headers: myHeaders,
+  body: JSON.stringify(user),
+  redirect: 'follow'
+}
+
+const request = fetch(`http://localhost:3000/userCard/${id}`, requestOptions)
+return request
+}
+
+async function SubmeterDados(event) {
   event.preventDefault();
-  //const dados = {nome: document.forms['nome-do-form']['nome'].value}
+
+  const params = new URLSearchParams(window.location.search)
+  let userId = null
+    if (params.has('id')) {
+        userId = params.get('id')
+  }
+
   const dados = {
     nome: document.forms["form-users"]["firstname"].value,
     sobrenome: document.forms["form-users"]["lastname"].value,
@@ -127,9 +185,25 @@ function SubmeterDados(event) {
     uf: document.forms["form-users"]["uf"].value,
     idade: Number(document.forms["form-users"]["age"].value),
     telefone: Number(document.forms["form-users"]["tel"].value),
-  };
+  }
 
-  CreateUser(dados)
+  if(userId) {
+  await updateUser(dados, userId)
+    .then(async (res) => {
+      if (res.status !== 200) {
+        const resultado = await res.json();
+        console.log(resultado);
+        return;
+      }
+      console.log("Sucesso");
+      console.log(res);
+      document.location.href='http://127.0.0.1:5500/view/index.html'
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+  } else {
+  await CreateUser(dados)
     .then(async (res) => {
       if (res.status !== 201) {
         const resultado = await res.json();
@@ -142,7 +216,8 @@ function SubmeterDados(event) {
     })
     .catch((error) => {
       console.error(error);
-    });
+    })
+  }
 }
 
 async function getUser(id){
@@ -155,22 +230,19 @@ async function getUser(id){
   return getUsersReturn
 }
 
-
 function carregarDados (user) {
 
-  document.forms["form-users"]["firstname"].value
-
-   /* document.forms["form-users"]["firstname"].value
-    document.forms["form-users"]["lastname"].value
-    document.forms["form-users"]["email"].value
-    document.forms["form-users"]["cpf"].value
-    document.forms["form-users"]["cep"].value
-    document.forms["form-users"]["address"].value
-    document.forms["form-users"]["number"].value
-    document.forms["form-users"]["city"].value
-    document.forms["form-users"]["uf"].value
-    document.forms["form-users"]["age"].value
-    document.forms["form-users"]["tel"].value*/
+  document.forms["form-users"]["firstname"].value = user.nome
+  document.forms["form-users"]["lastname"].value = user.sobrenome
+  document.forms["form-users"]["email"].value = user.email
+  document.forms["form-users"]["cpf"].value = user.cpf
+  document.forms["form-users"]["cep"].value = user.cep
+  document.forms["form-users"]["address"].value = user.endereco
+  document.forms["form-users"]["number"].value = user.numero
+  document.forms["form-users"]["city"].value = user.cidade
+  document.forms["form-users"]["uf"].value = user.uf
+  document.forms["form-users"]["age"].value = user.idade
+  document.forms["form-users"]["tel"].value = user.telefone
 }
 
 async function DeleteUser(user) {
