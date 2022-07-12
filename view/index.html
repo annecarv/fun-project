@@ -63,6 +63,7 @@
             </div>
         </div>
     </form>
+    <ul id="errors"></ul>
     <footer class="c-footer">
         <p><a class="c-copyright" target="_blank" href="https://www.linkedin.com/in/annecarv/"> ©Anne Carvalho. Todos os
                 direitos reservados.</a></p>
@@ -94,7 +95,7 @@
                     .catch(function (error) {
                         console.log(error)
                     })
-            }
+                }
             const buttonSubmit = document.getElementsByClassName('c-cadastro-input-cadastrar')[0]
             buttonSubmit.addEventListener('click', SubmeterDados)
         })</script>

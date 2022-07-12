@@ -8,14 +8,10 @@ services:
        # volumes:
         #    - ./data:/data/db
     api:
-        image: node
-        volumes:
-            - ./:/usr/src/app
+        build: .
         ports:
             - "3000:3000"
-        environment:
-            - MONGO_DB_URI=mongodb://mongo:27017/work
         depends_on:
             - mongo
-        command: bash -c "cd /usr/src/app && npm i && node index.js"
+
 

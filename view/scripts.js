@@ -161,6 +161,8 @@ async function createList() {
 }
 
 async function CreateUser(dados) {
+
+  console.log('jdajsjss',dados)
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
@@ -177,18 +179,18 @@ async function CreateUser(dados) {
 
 async function updateUser(user, id) {
 
-var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
+var myHeaders = new Headers()
+myHeaders.append("Content-Type", "application/json")
 
 
 var requestOptions = {
   method: 'PUT',
   headers: myHeaders,
-  body: JSON.stringify(user),
+  dados: JSON.stringify(user),
   redirect: 'follow'
 }
 
-const request = fetch(`http://localhost:3000/userCard/${id}`, requestOptions)
+const request = fetch(`http://localhost:3000/user/${id}`, requestOptions)
 return request
 }
 
@@ -215,11 +217,14 @@ async function SubmeterDados(event) {
     telefone: Number(document.forms["form-users"]["tel"].value),
   }
 
+  if(validationUser(dados))
+  {
+  console.log(dados)
   if(userId) {
   await updateUser(dados, userId)
     .then(async (res) => {
       if (res.status !== 200) {
-        const resultado = await res.json();
+        const resultado = await res.text();
         console.log(resultado);
         return;
       }
@@ -245,6 +250,7 @@ async function SubmeterDados(event) {
     .catch((error) => {
       console.error(error);
     })
+  }
   }
 }
 
@@ -282,4 +288,135 @@ async function DeleteUser(user) {
 
   const request = await fetch(`http://localhost:3000/user/${user._id}`, requestOptions);
   return request;
+}
+
+function validationUser(dados) {
+
+  console.log('Oi')
+
+  const erros = {}
+
+  const TestaCPF = (strCPF) => {
+    var Soma;
+    var Resto;
+    Soma = 0;
+    if (strCPF == "00000000000") return false;
+
+    for (i = 1; i <= 9; i++)
+      Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
+    Resto = (Soma * 10) % 11;
+  
+    if (Resto == 10 || Resto == 11) Resto = 0;
+    if (Resto != parseInt(strCPF.substring(9, 10))) return false;
+  
+    Soma = 0;
+    for (i = 1; i <= 10; i++)
+      Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+    Resto = (Soma * 10) % 11;
+  
+    if (Resto == 10 || Resto == 11) Resto = 0;
+    if (Resto != parseInt(strCPF.substring(10, 11))) return false;
+    return true;
+  }
+
+  if (!dados.nome) {
+    erros.nome = ["Nome é obrigatório!"]
+} else {
+    if (typeof dados.nome !== "string" || dados.nome.length < 2) {
+    if (erros.nome) {
+        erros.nome.push("Nome inválido!")
+    } else {
+        erros.nome = ["Nome inválido!"]
+    }
+    }
+}
+
+if (!dados.sobrenome) {
+    erros.sobrenome = ["Sobrenome é obrigatório!"]
+} else {
+    if (typeof dados.sobrenome !== "string" || dados.sobrenome.length < 2) {
+    if (erros.sobrenome) {
+        erros.sobrenome.push("Sobrenome inválido!")
+    } else {
+        erros.sobrenome = ["Sobrenome inválido!"]
+    }
+    }
+}
+
+if (!dados.telefone) {
+    dados.telefone = undefined
+} else {
+    if (typeof dados.telefone !== "number" || dados.telefone.length < 11) {
+        erros.telefone = ["Telefone inválido!"]
+    }
+}
+
+if (!dados.cpf) {
+    erros.cpf = ["CPF é obrigatório!"]
+} else {
+    if (typeof dados.cpf !== "number" || dados.cpf.length < 11 || !TestaCPF(String(dados.cpf)) ) {
+        erros.cpf = ["CPF inválido!"]
+    }
+}
+
+if (!dados.cep) {
+    erros.cep = ["CEP é obrigatório!"]
+} else {
+    if (typeof dados.cep !== "number" || dados.cep.length < 8) {
+        erros.cep = ["CEP inválido!"]
+}
+}
+
+if (!dados.endereco) {
+    erros.endereco = ["Endereço é obrigatório!"]
+} else {
+    if (typeof dados.endereco !== "string" || dados.endereco.length > 255) {
+        erros.endereco = ["Endereço inválido!"]
+    }
+}
+
+if (!dados.numero) {
+    erros.numero = ["Número é obrigatório!"]
+} else {
+    if (typeof dados.numero !== "string" || dados.numero.length > 5) {
+        erros.numero = ["Número inválido!"]
+    }
+}
+
+if (!dados.cidade) {
+    erros.cidade = ["Cidade é obrigatório!"]
+} else {
+    if (typeof dados.cidade !== "string" || dados.cidade.length > 255) {
+        erros.cidade = ["Cidade inválida!"]
+    }
+}
+
+if (!dados.uf) {
+    erros.uf = ["UF é obrigatório!"]
+} else {
+    if (typeof dados.uf !== "string" || dados.uf.length > 5) {
+        erros.uf = ["UF inválido!"]
+    }
+}
+
+if (!dados.idade) {
+    erros.idade = ["Idade é obrigatório!"]
+} else {
+    if (typeof dados.idade !== "number" || dados.idade.length > 2) {
+        erros.idade = ["Idade inválida!"]
+    }
+}
+const keys = Object.keys(erros)
+const elementErrors = document.getElementById('errors')
+elementErrors.innerHTML = ''
+if(keys.length) {
+    keys.forEach(erro => {
+      const li = document.createElement('li')
+      li.appendChild(document.createTextNode(`${erros[erro]}`))
+      elementErrors.appendChild(li)
+    })
+    return false
+} else {
+  return true
+}
 }
