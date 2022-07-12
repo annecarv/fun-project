@@ -23,7 +23,7 @@ COPY . .
 ENV MONGO_DB_URI=mongodb+srv://funpr0ject:vLQDEUHurEmEM8wK@cluster0.39grh.mongodb.net/?retryWrites=true&w=majority
 
 # Expõe a porta para acesso externo
-EXPOSE 80
+EXPOSE 3000
 
 # Comando para rodar a aplicação
 CMD [ "node", "index.js" ]
