@@ -21,9 +21,10 @@ COPY . .
 
 # Criamos variaveis de ambiente necessarias ENV MONGO_DB_URI='string de conexão do mongodb'
 ENV MONGO_DB_URI=mongodb+srv://funpr0ject:vLQDEUHurEmEM8wK@cluster0.39grh.mongodb.net/?retryWrites=true&w=majority
+ENV PORT=${PORT}
 
 # Expõe a porta para acesso externo
-EXPOSE 3000
+#EXPOSE 3000
 
 # Comando para rodar a aplicação
 CMD [ "node", "index.js" ]
