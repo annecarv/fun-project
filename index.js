@@ -18,4 +18,8 @@ app.use('/static', express.static('./view'))
 
 app.use(routes);
 
+app.use('/', (req,res) => {
+    res.send('Olá')
+})
+
 app.listen(process.env.PORT, () => console.log(`http://localhost:${process.env.PORT}`));
