@@ -243,6 +243,8 @@ async function SubmeterDados(event) {
         console.log(resultado);
         return;
       }
+
+      
       console.log("Sucesso");
       console.log(res);
       document.location.reload(true);
