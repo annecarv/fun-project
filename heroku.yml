@@ -1,5 +1,5 @@
 build:
   docker:
     api: Dockerfile
-run:
-  web: node index.js
+#run:
+  #web: node index.js
